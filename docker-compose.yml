@@ -1,0 +1,31 @@
+version: '3'
+services:
+  db:
+    image: postgres:14
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    command: bundle exec rails server -b '0.0.0.0'
+    volumes:
+      - .:/app
+      - bundle:/usr/local/bundle # gemのキャッシュ
+    ports:
+      - "3000:3000"
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      RAILS_ENV: development
+    depends_on:
+      - db
+
+volumes:
+  bundle:
+  postgres_data:

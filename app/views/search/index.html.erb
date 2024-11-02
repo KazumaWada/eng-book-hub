@@ -1,0 +1,20 @@
+<h1>Search#index</h1>
+<p>Find me in app/views/search/index.html.erb</p>
+<h1>検索結果</h1>
+
+<h2>デバッグ情報:</h2>
+<pre><%= @results.inspect %></pre>
+
+
+<% if @results.any? %>
+  <ul>
+    <% @results.each do |item| %>
+      <li>
+        <p><%= item["title"]%></p>
+        p><%= item["link"]%></p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>結果は見つかりませんでした。</p>
+<% end %>

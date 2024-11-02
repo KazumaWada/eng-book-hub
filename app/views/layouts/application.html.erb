@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>EngBookHub</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,13 @@
   </head>
 
   <body>
+  <h1>イングリッシュブックハブ</h1>
+  <p>「話せる英語」を身につけよう！</p>
+  <nav>
+  <%= link_to 'Home', root_path %>
+  <%= link_to 'About', about_path %>
+</nav>
+<span color: gray>最終更新日: 2024/10/3</span>
     <%= yield %>
   </body>
 </html>

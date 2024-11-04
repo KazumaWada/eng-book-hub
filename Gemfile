@@ -55,6 +55,11 @@ gem 'jquery-rails'
 gem 'sassc-rails'
 
 gem 'google-api-client', '~> 0.53.0'
+
+# scrape
+gem 'nokogiri'    # HTML/XMLをパースするためのライブラリ
+gem 'open-uri'    # URLからデータを取得するためのライブラリ
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

@@ -8,26 +8,26 @@
   
   <div class ="col-md-12">
   <div class="card">
-  <%= link_to book['associate_link'] do %>
-  <%= image_tag book['image_url'], class: "img-fluid card-img-top", alt: "Example image" %>
-  <div class="card-body">
-  <h5><%= book['title'] %></h5>
+  <%= link_to book['link'] do %>
+   <%= image_tag book['image_url'], class: "img-fluid card-img-top", alt: "Example image"%>
+   <div class="card-body">
+   <h5><%= book['title'] %></h5>
   <% end %>
-
-
-
-    <p>発売日: <%= book['date'] %></p>
 
     <!-- <p class="card-text" style="color: gray;">紹介されている記事</p> -->
     <span class="card-text">紹介されている記事</span>
-    
-    <% @book_results[book["title"]].each do |blog| %>
-        <li style="list-style: none;">
-          <%= link_to blog["link"] do %>
-            <%= blog["title"] %>
-          <% end %>
-        </li>
-      <% end %>
+    <% if @blog_posts_result[book['title']].present? %>
+            <ul>
+              <% @blog_posts_result[book['title']].each do |blog| %>
+                <li>
+                  <%= link_to blog['title'], blog['link'], target: "_blank", rel: "noopener" %>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p>関連する記事がありません</p>
+    <% end %>
+  
 
   </div>
   </div>
@@ -36,3 +36,14 @@
 
 </div>
 </div>
+
+
+
+
+
+  
+    
+
+
+
+
